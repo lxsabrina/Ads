@@ -1,6 +1,7 @@
 # 合约广告（GD）播放控制算法实现
 # 任务描述：给定广告列表的播放概率（也叫做T时刻的流量分配概率），给出任意时刻的广告候选列表。
 # 算法描述：  随机概率>drop_rate，广告展现；否则丢弃。（注：概率阈值是drop_rate， drop_rate = 1-播放rate）
+# 参考资料：https://zhuanlan.zhihu.com/p/101911280
 
 from collections import defaultdict
 import random
