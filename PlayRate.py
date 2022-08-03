@@ -8,10 +8,12 @@ import random
 class PlayController:
     def __init__(self):
         self.play_rate = dict()
-        #T时刻是一个分配问题，时间序列是一个预估问题。怎么描述
-        self.play_rate['ad1'] = [0.5, 0.1, 0.2] 
-        self.play_rate['ad2'] = [0.2, 0.2, 0.2]
-        self.play_rate['ad3'] = [0.2, 0.3, 0.4]
+        #广告AD在第一天，第二天，第三天的播放概率矩阵。X代表控制不同天的预算比例（第一天0.5，第二天0.3， 第三天0.2），Y代表控制不同位置的预算分配比例。
+        #两个子问题：每天花多少钱，每个位置花多少钱。
+        #生效逻辑：播放系统通过展现控制 来实现广告每天花多少钱，每个位置花多少钱。（cost = requests * ecpm * bid， 对于GD广告， 请求量正比于消耗；对于效果广告，请求量 = 消耗/ecpm）
+        self.play_rate['pos1'] = [0.4, 0.1, 0.05] 
+        self.play_rate['pos2'] = [0.1, 0.1, 0.1]
+        self.play_rate['pos3'] = [0.1, 0.1, 0.05]
     
     def play_list(self, t): #返回T时刻的播放列表, t = 0, 1, 2 
         ans = []
